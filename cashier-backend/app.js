@@ -25,6 +25,7 @@ connectCloudinary();
 //  }))
 // Enable CORS for all routes
 app.use(cors({
+  credentials: true,
   origin: 'https://cashier-1-tzon.onrender.com'
 }));
 
