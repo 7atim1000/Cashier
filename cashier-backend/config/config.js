@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const config = Object.freeze({
     
-    port: process.env.PORT || 8000,
+    port: process.env.PORT || 10000,
     databaseURI: process.env.MONGODB_URI || "mongodb+srv://7atim1000:U3W9MSjltr7xG5ww@cluster0.vebmvec.mongodb.net/Restaurant",
     nodeEnv : process.env.NODE_ENV || "development",
 
