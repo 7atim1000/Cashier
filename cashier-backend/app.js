@@ -19,10 +19,30 @@ connectDB();
 connectCloudinary();
 
 // cors policy to unblock response
+// app.use(cors({
+//     credentials: true,
+//     origin: ['https://cashier-1-tzon.onrender.com']
+//  }))
+// Enable CORS for all routes
 app.use(cors({
-    credentials: true,
-    origin: ['https://cashier-1-tzon.onrender.com']
- }))
+  origin: 'https://cashier-1-tzon.onrender.com'
+}));
+
+// Or allow multiple origins
+const allowedOrigins = [
+  'https://cashier-1-tzon.onrender.com',
+  'http://localhost:3000' // for local development
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}));
  
 //Middleware Parse incoming request in json format and cookie parser for cookies and token 
 app.use(express.json()); 
