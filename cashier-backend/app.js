@@ -44,6 +44,13 @@ app.use(cors({
     }
   }
 }));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://cashier-1-tzon.onrender.com');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
  
 //Middleware Parse incoming request in json format and cookie parser for cookies and token 
 app.use(express.json()); 
