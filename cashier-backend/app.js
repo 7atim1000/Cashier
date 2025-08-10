@@ -14,7 +14,8 @@ const connectCloudinary = require('./config/cloudinary');
 require('colors')
 
 //const PORT = process.env.PORT;
-const PORT = config.port;
+const PORT = config.port || 10000;
+// const PORT = process.env.PORT || 10000; 
 connectDB();
 connectCloudinary();
 
@@ -24,26 +25,37 @@ connectCloudinary();
 //     origin: ['https://cashier-1-tzon.onrender.com']
 //  }))
 // Enable CORS for all routes
-app.use(cors({
-  credentials: true,
-  origin: 'https://cashier-1-tzon.onrender.com'
-}));
 
-// Or allow multiple origins
 const allowedOrigins = [
   'https://cashier-1-tzon.onrender.com',
-  'http://localhost:10000' // for local development
+  'https://cashier-o8f5.onrender.com' // if you have frontend here too
 ];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
+  origin: allowedOrigins,
+  credentials: true
 }));
+
+// app.use(cors({
+//   credentials: true,
+//   origin: 'https://cashier-1-tzon.onrender.com'
+// }));
+
+// // Or allow multiple origins
+// const allowedOrigins = [
+//   'https://cashier-1-tzon.onrender.com',
+//   'http://localhost:10000' // for local development
+// ];
+
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }));
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://cashier-1-tzon.onrender.com');
