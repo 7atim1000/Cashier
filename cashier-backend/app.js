@@ -32,7 +32,7 @@ app.use(cors({
 // Or allow multiple origins
 const allowedOrigins = [
   'https://cashier-1-tzon.onrender.com',
-  'http://localhost:3000' // for local development
+  'http://localhost:10000' // for local development
 ];
 
 app.use(cors({
