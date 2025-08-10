@@ -19,11 +19,20 @@ const PORT = config.port || 10000;
 connectDB();
 connectCloudinary();
 
-// cors policy to unblock response
-app.use(cors({
-    credentials: true,
-    origin:['https://cashier-1-tzon.onrender.com']
- }));
+// Configure CORS properly
+const corsOptions = {
+  origin: 'https://cashier-1-tzon.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));  // Enable preflight for all routes
+
 
 
 
