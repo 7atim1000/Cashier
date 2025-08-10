@@ -1,0 +1,16 @@
+//import { addOrder, getOrders, getOrder, updateOrder } from "../controllers/orderController";
+//import { isVerifiedUser } from "../middlewares/tokenVerification";
+
+const express = require('express');
+
+const  { isVerifiedUser }  = require("../middlewares/tokenVerification");
+const { addOrder, getOrders, getOrderById, updateOrder } = require("../controllers/orderController");
+
+const router = express.Router();
+
+router.route('/').post(isVerifiedUser, addOrder);
+router.route('/fetch').post(isVerifiedUser, getOrders);
+router.route('/:id').get(isVerifiedUser, getOrderById);
+router.route('/:id').put(isVerifiedUser, updateOrder);
+
+module.exports = router ;
