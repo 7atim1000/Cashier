@@ -7,7 +7,7 @@ import MenuContainer from '../components/menu/MenuContainer';
 
 import { useSelector } from 'react-redux';
 import CustomerInfo from '../components/menu/CustomerInfo';
-import CartInfo from '../components/menu/cartInfo';
+import CartInfo from '../components/menu/CartInfo';
 import Bill from '../components/menu/Bill';
 import SelectCustomer from '../components/menu/SelectCustomer';
 
